@@ -5,13 +5,13 @@ import { createConnection } from 'typeorm'
 
 import { typeORMConfig } from './app/database/typeorm'
 
-// console.log(typeORMConfig);
+
 
 
 // cette fontion va remplacer l'autre façon
 
-createConnection(typeORMConfig).then(conn => {
-    console.log(conn);
+createConnection(typeORMConfig).then(_ => {
+    createServer();  // creat this server after the connection
 })
 
 // createConnection({
@@ -29,4 +29,5 @@ createConnection(typeORMConfig).then(conn => {
 // })
 
 
-createServer();
+
+ 
