@@ -12,7 +12,4 @@ export class Level {
     @Column()
     name: string;
 
-    @Column()
-    isActive: boolean;
-
 }
