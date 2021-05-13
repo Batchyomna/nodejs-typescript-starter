@@ -1,8 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
-import {Category} from './category'
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
+import { Category } from './category'
 
 @Entity()
-export class Skill {
+export class Skill extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -10,7 +10,6 @@ export class Skill {
     @Column()
     name: string;
 
-    @ManyToOne(()=> Category, category => category.skills)
-    category : Category;
-
+    @ManyToOne(() => Category, category => category.skills)
+    category: Category
 }
