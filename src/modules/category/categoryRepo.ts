@@ -24,7 +24,7 @@ export class CategoryRepo {
         const CategoryEntity = this.entities.Category
         return await CategoryEntity.findOne(id)
     }
-    public async editCategoryByIdRepo({ id, name, description }: categoryProps){
+    public async editCategoryByIdRepo(id: number, {name, description }: categoryProps){
         const CategoryEntity = this.entities.Category
         const categoryToEdit =  await CategoryEntity.findOne(id)
         if(name){

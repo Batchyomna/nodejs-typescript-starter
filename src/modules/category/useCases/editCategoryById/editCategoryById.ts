@@ -10,7 +10,7 @@ export class EditCategoryById {
         this.categoryRepo = categoryRepo
     }
 
-    public async editCategoryIdService({ id, name, description }: categoryProps) {
-        return await this.categoryRepo.editCategoryByIdRepo({ id, name, description });
+    public async editCategoryIdService(id: number,{name, description }: categoryProps) {
+        return await this.categoryRepo.editCategoryByIdRepo( id, {name, description });
     }
 }
