@@ -1,26 +1,26 @@
-//Domain : Skill
+//Domain : User
 
-interface ISkill {
+interface IUser {
     id: number
-    name: string
-    description : string
+    firstName: string
+    lastName : string
 
 }
 
-export type SkillProps = {
+export type UserProps = {
     id: number
-    name: string
-    description: string
+    firstName: string
+    lastName: string
 }
 
-export class Skill implements ISkill {
+export class User implements IUser {
     public id: number
-    public name: string
-    public description : string
+    public firstName: string
+    public lastName : string
 
-    constructor(props: SkillProps) {
+    constructor(props: UserProps) {
         this.id = props.id
-        this.name = props.name
-        this.description =props.description
+        this.firstName = props.firstName
+        this.lastName =props.lastName
     }
 }
