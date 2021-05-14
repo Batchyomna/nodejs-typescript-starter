@@ -3,7 +3,7 @@
 import { Router } from 'express'
 import { createSkillController } from './useCases/createSkill'
 import {getSkillsController} from './useCases/getSkills'
-import { getSkillByIdController} from './useCases/getskillById'
+import { getSkillByIdController} from './useCases/getSkillById'
 import {editSkillByIdController} from './useCases/editSkillById'
 import { deleteSkillByIdController } from './useCases/deleteSkill'
 
