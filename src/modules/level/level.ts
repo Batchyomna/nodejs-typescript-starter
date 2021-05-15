@@ -4,7 +4,7 @@ interface ILevel {
     number :number
     name: string
 }
-export type LevelProps = {
+export type levelProps = {
     id: number
     number :number
     name: string
@@ -14,12 +14,9 @@ export class Level implements ILevel{
     public number: number
     public name: string
 
-    constructor(props :LevelProps){
+    constructor(props :levelProps){
         this.id = props.id
         this.number = props.number
         this.name = props.name
-
-
-
     }
 }

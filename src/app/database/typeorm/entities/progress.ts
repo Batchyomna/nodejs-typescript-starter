@@ -1,27 +1,23 @@
-// import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-// import {Skill} from './skill'
-// import {Level} from './level'
-// import {User} from './user'
+import {Entity, PrimaryGeneratedColumn, BaseEntity, ManyToOne} from "typeorm";
+ import {Skill} from './skill'
+import {Level} from './level'
+import {User} from './user'
 
-// @Entity()
-// export class Prodress {
+@Entity()
+export class Progress extends BaseEntity{
 
-//     @PrimaryGeneratedColumn()
-//     id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-//     @Column()
-//     skill: Skill;
+    // @Column()
+    // date: string;
 
-//     @Column()
-//     level: Level;
+    @ManyToOne(() => Level, level => level.progresses)
+    level: Level
 
-//     @Column()
-//     user:User;
+    @ManyToOne(() => Skill, skill => skill.progresses)
+    skill: Skill
 
-//     @Column()
-//     date: string;
-
-//     @Column()
-//     isActive: boolean;
-
-// }
+    @ManyToOne(() => User, user => user.progresses)
+    user: User
+}

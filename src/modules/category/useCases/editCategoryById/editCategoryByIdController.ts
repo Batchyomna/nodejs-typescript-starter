@@ -22,7 +22,6 @@ export class EditCategoryByIdController {
 
 
         const category = await this.useCase.editCategoryIdService(id,{ name, description });
-         console.log('in the controller', category);
          
        return  res.status(200).json(category);
     }

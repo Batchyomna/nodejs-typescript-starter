@@ -1,15 +1,18 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany} from "typeorm";
+import {Progress} from './progress'
 @Entity()
-export class Level {
+export class Level extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    number: string;
+    number: number;
 
     @Column()
     name: string;
+    
+    @OneToMany(() => Progress, progress => progress.level)
+    progresses: Progress[]
 
 }

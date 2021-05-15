@@ -25,3 +25,4 @@ const databaseCredentials = {
 
 
 export { databaseCredentials }
+//entities: [path.join(__dirname, "src/app/database/typeorm/entities*.ts")]
