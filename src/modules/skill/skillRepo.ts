@@ -4,12 +4,15 @@ export class SkillRepo {
     private entities: any
 
     constructor(entities: any) {
-        //Category ,User ,Skill
+        //Skill, Category
         this.entities = entities
     }
-    public async create(skillProps: skillProps){
+    public async createSkillRepo(skillProps: skillProps){
         const SkillEntity = this.entities.Skill
-        return await SkillEntity.create({name: skillProps.name, description: skillProps.description}).save()
+        const CategoryEntity = this.entities.Category
+        const category = await CategoryEntity.findOne({ where : {id: skillProps.categoryId}})
+
+        return await SkillEntity.create({name: skillProps.name, description: skillProps.description, category: category}).save()
     }
     public async findSkills(){
         const SkillEntity = this.entities.Skill

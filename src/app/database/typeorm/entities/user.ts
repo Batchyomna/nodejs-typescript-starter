@@ -17,7 +17,7 @@ export class User extends BaseEntity{
     isAdmin: string;
     
     @Column()
-    lastLoging: Date;
+    lastLoggin: Date;
 
     @OneToOne(() => Student, student => student.user)
     student: Student

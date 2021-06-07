@@ -11,6 +11,7 @@ export class CreateSkill {
     }
 
     public async execute(props: skillProps) {
-        return await this.skillRepo.create(props);
+      
+        return await this.skillRepo.createSkillRepo(props);
     }
 }

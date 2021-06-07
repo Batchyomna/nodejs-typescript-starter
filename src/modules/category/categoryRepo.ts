@@ -38,7 +38,7 @@ export class CategoryRepo {
     }
     public async deleteCategoryByIdRepo(id :number){
         const CategoryEntity = this.entities.Category
-        let categoryToDelete= await CategoryEntity.findOne(id)
+        let categoryToDelete= await CategoryEntity.findOne({where: {id: id}})
         return await CategoryEntity.remove(categoryToDelete)
     }
     

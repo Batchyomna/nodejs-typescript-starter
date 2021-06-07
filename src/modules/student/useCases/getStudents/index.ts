@@ -1,7 +1,7 @@
 import { entitiesObject } from '../../../../app/database/typeorm/entities'
 import { UserRepo } from '../../studentRepo'
-import {GetUsers } from './getUsers'
-import {GetUsersController } from './getUsersController'
+import {GetUsers } from './getStudents'
+import {GetUsersController } from './getStudentsController'
 
 
 //Je construit mon repo avec les entités dont j'ai besoin

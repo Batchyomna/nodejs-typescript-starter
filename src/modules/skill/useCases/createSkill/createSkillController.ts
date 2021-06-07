@@ -10,7 +10,7 @@ export class CreateSkillController {
     }
       
     public async execute(req: Request, res: Response) {
-        const { name, description } = req.body
+        const { name, description, categoryId } = req.body
         if (!name) {
             return res.status(400).json({
                 error: {
@@ -27,7 +27,7 @@ export class CreateSkillController {
             });
         }
 
-        const skills = await this.useCase.execute({ name, description });
+        const skills = await this.useCase.execute({ name, description, categoryId });
        return  res.status(200).json(skills);
     }
 }

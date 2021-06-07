@@ -1,12 +1,12 @@
 import { entitiesObject } from '../../../../app/database/typeorm/entities'
-import { UserRepo } from '../../studentRepo'
-import {EditUserById } from './editUserById'
-import {EditUserByIdController } from './editUserByIdController'
+import { StudentRepo } from '../../studentRepo'
+import {EditStudentById } from './editStudentById'
+import {EditStudentByIdController } from './editStudentByIdController'
 
 
 //Je construit mon repo avec les entités dont j'ai besoin
-const userRepo = new UserRepo(entitiesObject)
-const editUserById = new EditUserById(userRepo)
-const editUserByIdController = new EditUserByIdController(editUserById)
+const studentRepo = new StudentRepo(entitiesObject)
+const editStudentById = new EditStudentById(studentRepo)
+const editStudentByIdController = new EditStudentByIdController(editStudentById)
 
-export { editUserById, editUserByIdController }
+export { editStudentById, editStudentByIdController }

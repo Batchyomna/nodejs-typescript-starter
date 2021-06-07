@@ -1,13 +1,13 @@
-import { DeleteUserById } from './deleteUserById'
+import { DeleteStudentById } from './deleteStudentById'
 import { Request, Response } from 'express'
 
 //Controller qui appelle la service 
 
-export class DeleteUserByIdController {
-    private useCase: DeleteUserById;
+export class DeleteStudentByIdController {
+    private useCase: DeleteStudentById;
 
-    constructor(DeleteUserById: DeleteUserById) {
-        this.useCase = DeleteUserById;
+    constructor(deleteStudentById: DeleteStudentById) {
+        this.useCase = deleteStudentById;
     }
       
     public async execute(req: Request, res: Response) {
@@ -19,7 +19,7 @@ export class DeleteUserByIdController {
                 }
             });
         }
-        const user = await this.useCase.deleteUserByIdService(id);
-       return  res.status(200).json(user);
+        const student = await this.useCase.deleteStudentByIdService(id);
+       return  res.status(200).json(student);
     }
 }

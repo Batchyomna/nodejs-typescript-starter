@@ -1,12 +1,12 @@
 import { entitiesObject } from '../../../../app/database/typeorm/entities'
-import { UserRepo } from '../../studentRepo'
-import {DeleteUserById } from './deleteUserById'
-import {DeleteUserByIdController } from './deleteUserByIdController'
+import { StudentRepo } from '../../studentRepo'
+import {DeleteStudentById } from './deleteStudentById'
+import {DeleteStudentByIdController } from './deleteStudentByIdController'
 
 
 //Je construit mon repo avec les entités dont j'ai besoin
-const userRepo = new UserRepo(entitiesObject)
-const deleteUserById = new DeleteUserById(userRepo)
-const deleteUserByIdController = new DeleteUserByIdController(deleteUserById)
+const studentRepo = new StudentRepo(entitiesObject)
+const deleteStudentById = new DeleteStudentById(studentRepo)
+const deleteStudentByIdController = new DeleteStudentByIdController(deleteStudentById)
 
-export { deleteUserById, deleteUserByIdController }
+export { deleteStudentById, deleteStudentByIdController }

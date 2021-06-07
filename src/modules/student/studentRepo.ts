@@ -11,29 +11,31 @@ export class StudentRepo {
         const UserEntity = this.entities.User
         return await UserEntity.create({firstName: studentProps.firstName, lastName: studentProps.lastName}).save()
     }
-    // public async findUsers(){
-    //     const UserEntity = this.entities.User
-    //     return await UserEntity.find()
-    // }
+    public async findStudentsRepo(){
+        const StudentEntity = this.entities.Student
+        return await StudentEntity.find()
+    }
     // public async findUserById(id :number){
     //     const UserEntity = this.entities.User
     //     return await UserEntity.findOne(id)
     // }
-    // public async editUserByIdRepo(id:number, {firstName, lastName }: userProps){
-    //     const UserEntity = this.entities.User
-    //     const userToEdit =  await UserEntity.findOne(id)
-    //     if(firstName){
-    //         userToEdit.firstName = firstName
-    //     }
-    //     if(lastName){
-    //         userToEdit.lastName = lastName
-    //     }
-    //     return await UserEntity.save(userToEdit)
 
-    // }
-    // public async deleteUserByIdRepo(id :number){
-    //     const UserEntity = this.entities.User
-    //     let userToDelete= await UserEntity.findOne(id)
-    //     return await UserEntity.remove(userToDelete)
-    // }
+    //? To ask: how we can edit password for this student
+    public async editStudentByIdRepo(id:number, {firstName, lastName }: studentProps){
+        const StudentEntity = this.entities.Student
+        const studentToEdit =  await StudentEntity.findOne(id)
+        if(firstName){
+            studentToEdit.firstName = firstName
+        }
+        if(lastName){
+            studentToEdit.lastName = lastName
+        }
+        return await StudentEntity.save(studentToEdit)
+
+    }
+    public async deleteStudentByIdRepo(id :number){
+        const StudentEntity = this.entities.Student
+        let studentToDelete= await StudentEntity.findOne(id)
+        return await StudentEntity.remove(studentToDelete)
+    }
 }
