@@ -10,24 +10,24 @@ export class CreateUserController {
     }
       
     public async execute(req: Request, res: Response) {
-        const {firstName, lastName } = req.body
-        if (!firstName) {
+        const {email, password, isAdmin, lastLoggin } = req.body
+        if (!email) {
             return res.status(400).json({
                 error: {
-                    message: 'Your first name is required'
+                    message: 'Your email is required'
                 }
             });
         }
 
-        if (!lastName) {
+        if (!password) {
             return res.status(400).json({
                 error: {
-                    message: 'Yours last name is required'
+                    message: 'Youu have to enter your password'
                 }
             });
         }
 
-        const user = await this.useCase.execute({firstName, lastName });
+        const user = await this.useCase.execute({email, password, isAdmin, lastLoggin });
        return  res.status(200).json(user);
     }
 }

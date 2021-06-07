@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, BaseEntity, ManyToOne} from "typeorm";
  import {Skill} from './skill'
 import {Level} from './level'
-import {User} from './user'
+import {Student} from './student'
 
 @Entity()
 export class Progress extends BaseEntity{
@@ -18,6 +18,6 @@ export class Progress extends BaseEntity{
     @ManyToOne(() => Skill, skill => skill.progresses)
     skill: Skill
 
-    @ManyToOne(() => User, user => user.progresses)
-    user: User
+    @ManyToOne(() => Student, student => student.progresses)
+    student: Student
 }

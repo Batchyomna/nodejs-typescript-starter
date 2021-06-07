@@ -1,15 +1,15 @@
-import {userProps} from './userTypes' 
+import {studentProps} from './studentTypes' 
 
-export class UserRepo {
+export class StudentRepo {
     private entities: any
 
     constructor(entities: any) {
-        //User
+        //Student
         this.entities = entities
     }
-    public async create(userProps:userProps){
+    public async create(studentProps:studentProps){
         const UserEntity = this.entities.User
-        return await UserEntity.create({email: userProps.email, password: userProps.password,  isAdmin: userProps.isAdmin,  lastLoggin: userProps.lastLoggin }).save()
+        return await UserEntity.create({firstName: studentProps.firstName, lastName: studentProps.lastName}).save()
     }
     // public async findUsers(){
     //     const UserEntity = this.entities.User

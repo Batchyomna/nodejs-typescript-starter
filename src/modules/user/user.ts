@@ -2,25 +2,34 @@
 
 interface IUser {
     id: number
-    firstName: string
-    lastName : string
+    email: string
+    password : string
+    isAdmin: boolean,
+    lastLoggin: Date
 
 }
 
 export type UserProps = {
     id: number
-    firstName: string
-    lastName: string
+    email: string
+    password : string
+    isAdmin: boolean,
+    lastLoggin: Date
 }
 
 export class User implements IUser {
     public id: number
-    public firstName: string
-    public lastName : string
+    public email: string
+    public password : string
+    public isAdmin: boolean
+    public lastLoggin: Date
 
     constructor(props: UserProps) {
         this.id = props.id
-        this.firstName = props.firstName
-        this.lastName =props.lastName
+        this.email = props.email
+        this.password =props.password
+        this.isAdmin =props.isAdmin
+        this.lastLoggin =props.lastLoggin
+     
     }
 }
