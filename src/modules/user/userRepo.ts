@@ -36,4 +36,5 @@ export class UserRepo {
         let userToDelete= await UserEntity.findOne(id)
         return await UserEntity.remove(userToDelete)
     }
+   
 }

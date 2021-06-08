@@ -38,4 +38,14 @@ export class StudentRepo {
         let studentToDelete= await StudentEntity.findOne(id)
         return await StudentEntity.remove(studentToDelete)
     }
+    public async testIfUserIdAlreadyUsed(id : number){
+        const StudentEntity = this.entities.Student;
+        let student = await StudentEntity.findOne({where: {user: id}})
+        if(student){
+            return true // déjà used
+        }else{
+          return  false
+        }
+    }
+   
 }

@@ -14,12 +14,18 @@ export class CreateStudent {
     }
 
     public async execute(props: studentProps) {
-        const userInfo = await this.userRepo.findUserById(props.user)
+        const userIdAlreadyUsed = await this.studentRepo.testIfUserIdAlreadyUsed(props.user)
+        if(userIdAlreadyUsed){
+             return {message: "You had used this user id"}
+        }else{
+            const userInfo = await this.userRepo.findUserById(props.user)
         const student ={
             firstName: props.firstName,
             lastName: props.lastName,
             user: userInfo
         }
         return await this.studentRepo.create(student);
+        }
+        
     }
 }

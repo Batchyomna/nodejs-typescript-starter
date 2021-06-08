@@ -1,7 +1,11 @@
+//Controller
 import { CreateUser } from './createUser'
 import { Request, Response } from 'express'
-//Controller
 
+
+// DTO
+import { validate } from 'class-validator'
+import { RequestCreateUserDto } from './createUserDto'
 export class CreateUserController {
     private useCase: CreateUser;
 
@@ -26,8 +30,19 @@ export class CreateUserController {
                 }
             });
         }
+        const requestUserDto = new RequestCreateUserDto(req.body);
+        const errors = await validate(requestUserDto);
+        // const dtoErrors = await requestUserDto.isValid(requestUserDto)
 
-        const user = await this.useCase.execute({email, password, isAdmin, lastLoggin });
+        // if (!!dtoErrors) {
+        //     return res.status(400).json(dtoErrors);
+        // }
+        if(errors.length > 0){
+            return res.status(400).json(errors[0].constraints)
+        }else{
+               const user = await this.useCase.execute({email, password, isAdmin, lastLoggin });
        return  res.status(200).json(user);
+        }
+     
     }
 }
