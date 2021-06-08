@@ -11,7 +11,7 @@ export class EditUserByIdController {
       
     public async execute(req: Request, res: Response) {
 
-        const { id, firstName, lastName } = req.body
+        const { id, email, password, isAdmin, lastLoggin } = req.body
         if (!id) {
             return res.status(400).json({
                 error: {
@@ -19,7 +19,7 @@ export class EditUserByIdController {
                 }
             });
         }
-        const user = await this.useCase.editUserIdService(id, {firstName, lastName});
+        const user = await this.useCase.editUserIdService(id, {email, password, isAdmin, lastLoggin});
        return  res.status(200).json(user);
     }
 }

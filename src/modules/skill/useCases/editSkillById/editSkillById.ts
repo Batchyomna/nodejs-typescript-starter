@@ -10,7 +10,7 @@ export class EditSkillById {
         this.skillRepo = skillRepo
     }
 
-    public async editSkillIdService( id: number,{ name, description }: skillProps) {
-        return await this.skillRepo.editSkillByIdRepo(id, {  name, description });
+    public async editSkillIdService( id: number,{ name, description, category }: skillProps) {
+        return await this.skillRepo.editSkillByIdRepo(id, {  name, description, category });
     }
 }

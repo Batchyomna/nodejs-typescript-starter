@@ -11,8 +11,8 @@ export class CreateProgressController {
       
     public async execute(req: Request, res: Response) {
         
-        const { studentId, skillId, levelId} = req.body
-        const createProgress = await this.useCase.createProgressService(studentId, skillId, levelId)
+        // const { studentId, skillId, levelId} = req.body
+        const createProgress = await this.useCase.createProgressService(req.body)
         return res.status(200).json(createProgress)
     }
 }

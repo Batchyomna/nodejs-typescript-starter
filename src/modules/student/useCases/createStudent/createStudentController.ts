@@ -10,7 +10,7 @@ export class CreateStudentController {
     }
       
     public async execute(req: Request, res: Response) {
-        const {firstName, lastName } = req.body
+        const {firstName, lastName, user } = req.body
         if (!firstName) {
             return res.status(400).json({
                 error: {
@@ -26,8 +26,15 @@ export class CreateStudentController {
                 }
             });
         }
+        if (!user) {
+            return res.status(400).json({
+                error: {
+                    message: 'userId is required'
+                }
+            });
+        }
 
-        const user = await this.useCase.execute({firstName, lastName });
-       return  res.status(200).json(user);
+        const student = await this.useCase.execute({firstName, lastName, user });
+       return  res.status(200).json(student);
     }
 }

@@ -10,7 +10,7 @@ export class EditUserById {
         this.userRepo = userRepo
     }
 
-    public async editUserIdService( id: number,{ firstName, lastName }: userProps) {
-        return await this.userRepo.editUserByIdRepo(id, { firstName, lastName });
+    public async editUserIdService( id: number,{ email, password, isAdmin, lastLoggin }: userProps) {
+        return await this.userRepo.editUserByIdRepo(id, { email, password , isAdmin, lastLoggin});
     }
 }

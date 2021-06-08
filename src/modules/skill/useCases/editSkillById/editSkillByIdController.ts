@@ -11,7 +11,7 @@ export class EditSkillByIdController {
       
     public async execute(req: Request, res: Response) {
 
-        const { id, name, description } = req.body
+        const { id, name, description, category } = req.body
         if (!id) {
             return res.status(400).json({
                 error: {
@@ -19,7 +19,7 @@ export class EditSkillByIdController {
                 }
             });
         }
-        const skill = await this.useCase.editSkillIdService(id, { name, description });
+        const skill = await this.useCase.editSkillIdService(id, { name, description, category });
        return  res.status(200).json(skill);
     }
 }

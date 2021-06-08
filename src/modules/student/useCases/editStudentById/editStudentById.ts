@@ -10,7 +10,7 @@ export class EditStudentById {
         this.studentRepo = studentRepo
     }
 
-    public async editStudentIdService( id: number,{ firstName, lastName , userId}: studentProps) {
-        return await this.studentRepo.editStudentByIdRepo(id, { firstName, lastName, userId });
+    public async editStudentIdService( id: number,{ firstName, lastName , user}: studentProps) {
+        return await this.studentRepo.editStudentByIdRepo(id, { firstName, lastName, user });
     }
 }

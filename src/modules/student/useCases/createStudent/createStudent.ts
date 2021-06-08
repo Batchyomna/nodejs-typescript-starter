@@ -2,15 +2,24 @@
 //UseCase -> Service -> de la logique
 import { StudentRepo } from "../../studentRepo";
 import { studentProps } from '../../studentTypes'
+import {UserRepo} from '../../../user/userRepo'
 
 export class CreateStudent {
     private studentRepo: StudentRepo;
+    private userRepo : UserRepo
 
-    constructor(studentRepo: StudentRepo) {
+    constructor(studentRepo: StudentRepo, userRepo: UserRepo) {
         this.studentRepo = studentRepo
+        this.userRepo = userRepo
     }
 
     public async execute(props: studentProps) {
-        return await this.studentRepo.create(props);
+        const userInfo = await this.userRepo.findUserById(props.user)
+        const student ={
+            firstName: props.firstName,
+            lastName: props.lastName,
+            user: userInfo
+        }
+        return await this.studentRepo.create(student);
     }
 }

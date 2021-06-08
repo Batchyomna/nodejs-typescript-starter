@@ -1,12 +1,12 @@
 import { entitiesObject } from '../../../../app/database/typeorm/entities'
-import { UserRepo } from '../../studentRepo'
-import {GetUsers } from './getStudents'
-import {GetUsersController } from './getStudentsController'
+import { StudentRepo } from '../../studentRepo'
+import {GetStudents } from './getStudents'
+import {GetStudentsController } from './getStudentsController'
 
 
 //Je construit mon repo avec les entités dont j'ai besoin
-const userRepo = new UserRepo(entitiesObject)
-const getUsers = new GetUsers(userRepo)
-const getUsersController = new GetUsersController(getUsers)
+const studentRepo = new StudentRepo(entitiesObject)
+const getStudents = new GetStudents(studentRepo)
+const getStudentsController = new GetStudentsController(getStudents)
 
-export { getUsers, getUsersController }
+export { getStudents, getStudentsController }

@@ -11,7 +11,7 @@ export class EditStudentByIdController {
       
     public async execute(req: Request, res: Response) {
 
-        const { id, firstName, lastName, userId } = req.body
+        const { id, firstName, lastName, user } = req.body
         if (!id) {
             return res.status(400).json({
                 error: {
@@ -19,7 +19,7 @@ export class EditStudentByIdController {
                 }
             });
         }
-        const student = await this.useCase.editStudentIdService(id, {firstName, lastName, userId});
+        const student = await this.useCase.editStudentIdService(id, {firstName, lastName, user});
        return  res.status(200).json(student);
     }
 }

@@ -23,5 +23,9 @@ import {levelProps} from './levelTypes'
         const LevelEntity = this.entities.Level
         return await LevelEntity.create({number: number , name: name}).save()
      }
+     public async getLevelById(id : number){
+        const LevelEntity = this.entities.Level
+        return await LevelEntity.findOne(id)
+     }
 
  }

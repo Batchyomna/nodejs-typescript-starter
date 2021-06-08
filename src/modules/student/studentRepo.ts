@@ -8,17 +8,17 @@ export class StudentRepo {
         this.entities = entities
     }
     public async create(studentProps:studentProps){
-        const UserEntity = this.entities.User
-        return await UserEntity.create({firstName: studentProps.firstName, lastName: studentProps.lastName}).save()
+        const StudentEntity = this.entities.Student
+        return await StudentEntity.create({firstName: studentProps.firstName, lastName: studentProps.lastName, user: studentProps.user}).save()
     }
     public async findStudentsRepo(){
         const StudentEntity = this.entities.Student
         return await StudentEntity.find()
     }
-    // public async findUserById(id :number){
-    //     const UserEntity = this.entities.User
-    //     return await UserEntity.findOne(id)
-    // }
+    public async getStudentByIdRepo(id :number){
+        const StudentEntity = this.entities.Student
+        return await StudentEntity.findOne(id)
+    }
 
     //? To ask: how we can edit password for this student
     public async editStudentByIdRepo(id:number, {firstName, lastName }: studentProps){

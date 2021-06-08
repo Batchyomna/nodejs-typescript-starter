@@ -1,12 +1,12 @@
-import { GetUserById } from './getUserById'
+import { GetStudentById } from './getStudentById'
 import { Request, Response } from 'express'
 //Controller
 
-export class GetUserByIdController {
-    private useCase: GetUserById;
+export class GetStudentByIdController {
+    private useCase: GetStudentById;
 
-    constructor(getUserById: GetUserById) {
-        this.useCase = getUserById;
+    constructor(getStudentById: GetStudentById) {
+        this.useCase = getStudentById;
     }
       
     public async execute(req: Request, res: Response) {
@@ -19,7 +19,7 @@ export class GetUserByIdController {
                 }
             });
         }
-        const user = await this.useCase.findUserIdService(id);
-        return  res.status(200).json(user);
+        const student = await this.useCase.findStudentByIdService(id);
+        return  res.status(200).json(student);
     }
 }
