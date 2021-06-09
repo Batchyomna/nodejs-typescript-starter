@@ -16,7 +16,7 @@ export class CreateStudent {
     public async execute(props: studentProps) {
         const userIdAlreadyUsed = await this.studentRepo.testIfUserIdAlreadyUsed(props.user)
         if(userIdAlreadyUsed){
-             return {message: "You had used this user id"}
+             return {message: "You had used this user id befor, so you can't used again"}
         }else{
             const userInfo = await this.userRepo.findUserById(props.user)
         const student ={
