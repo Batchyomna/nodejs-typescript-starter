@@ -2,7 +2,9 @@
 //UseCase -> Service -> de la logique
 import { UserRepo } from "../../userRepo";
 import { userLoginProps } from '../../userLoginTypes'
+import {createToken} from '../../../../utils/createToken'
 import argon2 from 'argon2'
+// const jwt = require('jsonwebtoken')
 
 
 
@@ -24,7 +26,8 @@ export class LoginUser {
                     return {
                         success: true,
                         message: "You are autherized",
-                        token: await this.userRepo.createToken(user.id)
+                        token: createToken(user.id)
+                        // token:  jwt.sign({data: user.id}, 'CONSTANT_SECRET_TOKEN', { expiresIn: '1h' })
                     }
                 } else {
                     return {

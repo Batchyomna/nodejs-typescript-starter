@@ -1,5 +1,5 @@
 import {userProps} from './userTypes' 
-const jwt = require('jsonwebtoken')
+
 export class UserRepo {
     private entities: any
 
@@ -51,10 +51,10 @@ export class UserRepo {
         return await UserEntity.findOne({email: email})
 
     }
-    public createToken(id: number){
-        const token = jwt.sign({data: id}, 'CONSTANT_SECRET_TOKEN', { expiresIn: '1h' });
-        return token
+    // public createToken(id: number){
+    //     const token = jwt.sign({data: id}, 'CONSTANT_SECRET_TOKEN', { expiresIn: '1h' });
+    //     return token
 
-    }
+    // }
    
 }

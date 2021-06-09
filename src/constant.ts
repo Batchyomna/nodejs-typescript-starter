@@ -20,3 +20,6 @@ export const DB_USERNAME = process.env.DB_USERNAME || 'root';
 export const DB_PASSWORD = process.env.DB_PASSWORD || 'Mot2passe@';
 export const DB_HOST = process.env.DB_HOST || 'localhost';
 export const DB_PORT = parseInt(process.env.DB_PORT as string) || 3306;
+// secret Token
+
+export const TOKEN_SECRET = 'THE_MOST_COMLICITADE_SECRET'
