@@ -1,5 +1,5 @@
 import {userProps} from './userTypes' 
-
+const jwt = require('jsonwebtoken')
 export class UserRepo {
     private entities: any
 
@@ -35,6 +35,26 @@ export class UserRepo {
         const UserEntity = this.entities.User
         let userToDelete= await UserEntity.findOne(id)
         return await UserEntity.remove(userToDelete)
+    }
+    public async isUserExist(email:string):Promise<boolean>{
+        const UserEntity = this.entities.User
+        const user =  await UserEntity.findOne({email: email})
+        //  return !!result === true;
+        if(!!user){
+            return true
+        }else{
+            return false
+        }
+    }
+    public async getUserByEmail(email:string){
+        const UserEntity = this.entities.User
+        return await UserEntity.findOne({email: email})
+
+    }
+    public createToken(id: number){
+        const token = jwt.sign({data: id}, 'CONSTANT_SECRET_TOKEN', { expiresIn: '1h' });
+        return token
+
     }
    
 }

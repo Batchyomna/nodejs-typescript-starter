@@ -4,7 +4,7 @@ import { Request, Response } from 'express'
 
 
 // DTO
-import { validate } from 'class-validator'
+import { validate } from  'class-validator'
 import { RequestCreateUserDto } from './createUserDto'
 export class CreateUserController {
     private useCase: CreateUser;
@@ -14,35 +14,29 @@ export class CreateUserController {
     }
       
     public async execute(req: Request, res: Response) {
-        const {email, password, isAdmin, lastLoggin } = req.body
-        if (!email) {
-            return res.status(400).json({
-                error: {
-                    message: 'Your email is required'
-                }
-            });
-        }
-
-        if (!password) {
-            return res.status(400).json({
-                error: {
-                    message: 'Youu have to enter your password'
-                }
-            });
-        }
-        const requestUserDto = new RequestCreateUserDto(req.body);
-        const errors = await validate(requestUserDto);
-        // const dtoErrors = await requestUserDto.isValid(requestUserDto)
-
-        // if (!!dtoErrors) {
-        //     return res.status(400).json(dtoErrors);
-        // }
-        if(errors.length > 0){
-            return res.status(400).json(errors[0].constraints)
-        }else{
-               const user = await this.useCase.execute({email, password, isAdmin, lastLoggin });
-       return  res.status(200).json(user);
-        }
+        // const {email, password, isAdmin, lastLoggin } = req.body
      
+        const requestUserDto = new RequestCreateUserDto(req.body);
+         const errors = await validate(requestUserDto);
+         console.log('Request DTO create user errors : ', errors);
+        const dtoErrors = await requestUserDto.isValid(requestUserDto)
+
+        if (!!dtoErrors) {
+            return res.status(400).json(dtoErrors);
+        }
+
+        try {
+            const result = await this.useCase.execute(req.body);
+
+            if (!result.success) {
+                return res.status(400).json(result.message)
+            }
+            return res.status(201).json(result.message);
+        }
+        catch (err) {
+            console.log('create controllers errors :', err);
+            return err
+        }
     }
+
 }
