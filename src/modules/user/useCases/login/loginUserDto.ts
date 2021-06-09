@@ -1,4 +1,4 @@
-import { MinLength, MaxLength, IsString, IsDefined, IsEmail } from 'class-validator'
+import { IsDefined, IsEmail } from 'class-validator'
 import { AbstractDto } from '../../../../common/abstractDto'
 
 export interface IRequestLoginUserDto {

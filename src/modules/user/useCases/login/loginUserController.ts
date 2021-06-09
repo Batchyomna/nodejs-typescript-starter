@@ -37,10 +37,9 @@ export class LoginUserController {
             return res.status(400).json(errors[0].constraints)
         }else{
             const result = await this.useCase.loginUserService(req.body);
-            console.log('Yomna test', result)
             if(result.success){
-                res.cookie('the Token', result.token)
-                return  res.status(200).json({token : result.token, message: result.message}); 
+                // res.cookie('the Token', result.token)
+                return  res.cookie('the Token', result.token, {maxAge: 900000, httpOnly:true}).status(200).json({token : result.token, message: result.message}); 
 
             }else{
                 return res.status(400).json({message: result.message} )

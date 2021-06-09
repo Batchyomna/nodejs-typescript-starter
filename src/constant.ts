@@ -22,4 +22,4 @@ export const DB_HOST = process.env.DB_HOST || 'localhost';
 export const DB_PORT = parseInt(process.env.DB_PORT as string) || 3306;
 // secret Token
 
-export const TOKEN_SECRET = 'THE_MOST_COMLICITADE_SECRET'
+export const TOKEN_SECRET =  process.env.JWT_SECRET || 'THE_MOST_COMLICITADE_SECRET'
